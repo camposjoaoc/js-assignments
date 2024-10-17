@@ -8,8 +8,10 @@ let myAge;
 let favoriteColor;
 
 function runExercise2() {
+    //Opens the prompt for the user to enter values
     firstName = prompt("Please, type your name:");
     myAge = prompt("Please, type your Age:");
     favoriteColor = prompt("Please, type your favorite color:");
-    console.log("My name is " + firstName + ", I'm " + myAge + " years old and my favorite color is " + favoriteColor);
+    //Prints a message with the previously entered values
+    console.log(`My name is ${myName}, I am ${myAge} years old. My favorite color is ${favoriteColor}.`);
 }
