@@ -4,6 +4,6 @@
 // This exercise will help you understand how to use the console.log() function. 
 
 function runExercise1() {
-
+    //Prints HELLO WORD
     console.log("Hello, World!");
 }
