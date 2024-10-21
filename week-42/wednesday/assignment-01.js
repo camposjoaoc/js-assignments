@@ -14,6 +14,12 @@ function runExercise1() {
 
     // Prompt the user to enter a price and store it as a string
     priceTag = prompt("Enter the price tag:");
+    console.log(priceTag);
+
+    // Removes currency symbols ($, €, £) from the priceTag string, leaving only the numeric value
+    priceTag = priceTag.replaceAll("$", "")
+        .replaceAll("€", "")
+        .replaceAll("£", "");
 
     // Convert the priceTag to a floating-point number and apply a 10% discount
     discountedPrice = parseFloat(priceTag) * 0.9;
@@ -22,7 +28,7 @@ function runExercise1() {
     console.log(`The original price was: $${priceTag}`);
 
     // Log the new price with a 10% discount, formatted to two decimal places
-    console.log(`New price with 10% of discount: $${discountedPrice.toFixed(2)}`); 
+    console.log(`New price with 10% of discount: $${discountedPrice.toFixed(2)}`);
 
     // The toFixed(2) method rounds the number to two decimal places
 }
