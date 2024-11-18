@@ -1,0 +1,48 @@
+// Instructions:
+// Typing - game
+// REQUIREMENTS: 
+
+// PART 1 
+// Create a addWordToDOM function that will give a random word to the user 
+// Create a updateScore function that will increment score by 1 
+// Add an event listener to the text element.When you type in the correct word, the function should:
+// ---- update score  
+// ---- give the user a new word  
+// ---- increment time by 5 seconds  
+// ---- reset the input to empty string 
+
+// PART 2 
+// Counting down - timer 
+// Create a updateTime function, every time it runs it should decrement 1 from the timer 
+// Create  a gameOver function that will open once the timer hits zero 
+
+// PART 3, OPTIONAL: 
+
+// Add an even listener to the settings button that will hide the settings 
+// Add an event listener for the settings form so that you can change the difficulty 
+// Set time depending on difficulty in the eventlistener 
+
+// Variables for the DOM elements
+
+// Array
+const words = [
+    "dependent",
+    "dog",
+    "superficial",
+    "admit",
+    "juice",
+    "javascript",
+    "developer",
+    "airplane",
+    "great",
+    "fun",
+    "manipulate",
+    "cat",
+    "transition",
+    "school",
+    "computer",
+    "programming",
+    "drag",
+    "loving",
+    "north",
+];
