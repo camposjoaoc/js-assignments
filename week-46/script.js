@@ -14,11 +14,11 @@
 // PART 2 
 // Counting down - timer 
 // Create a updateTime function, every time it runs it should decrement 1 from the timer 
-// Create  a gameOver function that will open once the timer hits zero 
+// Create a gameOver function that will open once the timer hits zero 
 
 // PART 3, OPTIONAL: 
 
-// Add an even listener to the settings button that will hide the settings 
+// Add an event listener to the settings button that will hide the settings 
 // Add an event listener for the settings form so that you can change the difficulty 
 // Set time depending on difficulty in the eventlistener 
 
@@ -53,6 +53,10 @@ let score = 0;
 let randomNumber;
 // Set an interval to update the time every second
 const timeout = setInterval(updateTime, 1000);
+// Select the input field
+const input = document.querySelector("input");
+// Get element time
+const newTime = document.getElementById("time");
 
 // Call the function to display the initial word
 addWordToDOM();
@@ -94,13 +98,12 @@ function updateScore() {
 }
 
 /**
- * Function to add additional time
- * - Increases the current time by 5 seconds
- * - Updates the time display in the DOM
+ * Function to get the current time from the DOM
+ * - Retrieves the time displayed in the DOM
+ * - Removes the "s" suffix and parses it as an integer
+ * - Returns the parsed time
  */
-function addTime() {
-    const newTime = document.getElementById("time");
-
+function getTime() {
     // Get the current time as an integer
     let currentTime = newTime.innerText;
     currentTime = currentTime.replaceAll("s", ""); // Remove the "s" suffix
@@ -108,6 +111,19 @@ function addTime() {
 
     // Log the current time for debugging
     console.log(currentTime);
+
+    return currentTime;
+}
+
+/**
+ * Function to add additional time
+ * - Increases the current time by 5 seconds
+ * - Updates the time display in the DOM
+ */
+function addTime() {
+
+    // Get the current time as an integer
+    let currentTime = getTime();
 
     // Add 5 seconds to the current time
     currentTime += 5;
@@ -123,15 +139,9 @@ function addTime() {
  * - Updates the time display in the DOM
  */
 function updateTime() {
-    const newTime = document.getElementById("time");
 
     // Get the current time as an integer
-    let currentTime = newTime.innerText;
-    currentTime = currentTime.replaceAll("s", ""); // Remove the "s" suffix
-    currentTime = parseInt(currentTime);
-
-    // Log the current time for debugging
-    console.log(currentTime);
+    let currentTime = getTime();
 
     // If time reaches 0, stop the interval
     if (currentTime == 0) {
@@ -167,10 +177,12 @@ function gameOver() {
     endGame.style.display = "flex";
 }
 
-// Select the input field
-const input = document.querySelector("input");
-
-// Add an event listener for keypress events
+/**
+ * Event listener for keypress events on the input field
+ * - Checks if the entered word matches the displayed word
+ * - Updates the score, adds a new word, increments time, and clears the input field on success
+ * - Logs an error message and clears the input field on failure
+ */
 input.addEventListener("keypress", function (e) {
     let inputWord = e.target.value;
 
