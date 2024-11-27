@@ -46,17 +46,19 @@ const words = [
     "loving",
     "north",
 ];
-
-// Initialize score to 0
-let score = 0;
-// Variable to store a random number used for selecting words
-let randomNumber;
 // Set an interval to update the time every second
 const timeout = setInterval(updateTime, 1000);
 // Select the input field
 const input = document.querySelector("input");
 // Get element time
 const newTime = document.getElementById("time");
+// Initialize score to 0
+let score = 0;
+// Variable to store a random number used for selecting words
+let randomNumber;
+// Variable to store a random word from the array of words
+let randomWord = "";
+
 
 // Call the function to display the initial word
 addWordToDOM();
@@ -72,11 +74,14 @@ function addWordToDOM() {
     // Generate a random index within the words array
     randomNumber = Math.floor(Math.random() * words.length);
 
+    // Select a random word from the words array and store it in the randomWord variable
+    randomWord = words[randomNumber];
+
     // Log the word to the console for debugging
-    console.log(words[randomNumber]);
+    console.log(randomWord);
 
     // Update the text content of the word element
-    newWord.textContent = words[randomNumber];
+    newWord.textContent = randomWord;
 }
 
 /**
@@ -189,7 +194,7 @@ input.addEventListener("keypress", function (e) {
     // If the Enter key is pressed
     if (e.key === "Enter") {
         // Check if the input word matches the current word
-        if (inputWord == words[randomNumber]) {
+        if (inputWord == randomWord) {
             // Correct word: update score, add a new word, add time, and clear the input
             updateScore();
             addWordToDOM();
